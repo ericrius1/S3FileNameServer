@@ -22,7 +22,7 @@ app.get('/', function(req, res) {
     else {
       var keys = _.pluck(data.Contents, 'Key')
       console.log(keys);
-      res.send(keys);
+      res.send('hey');
     }
   });
 });
