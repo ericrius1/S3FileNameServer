@@ -17,7 +17,7 @@ app.get('/', function(req, res) {
 
   var params = {
     Bucket: "hifi-public",
-    Prefix: query.assetDir,
+    Marker: query.assetDir,
     MaxKeys: 10
   };
   s3.listObjects(params, function(err, data) {
@@ -27,8 +27,7 @@ app.get('/', function(req, res) {
     }
     else {
       var keys = _.pluck(data.Contents, 'Key')
-      console.log(keys);
-      res.send(keys);
+      res.send( {urls:keys} );
     }
   });
 });
